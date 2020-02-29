@@ -16,5 +16,9 @@
 
 - cv/image_similarity, [【计算机视觉】从图像距离（图像相似性）的计算（ahash/dhash/phash/whash）到以图搜索的实现（deep ranking）（一）](https://www.bilibili.com/video/av77627995)
 
+## 4. 统计
+
+- stats/, [【统计】统计检验（从t-distribution（t分布）到t-test（t检验），t-score（t-统计量）以及卡方检验（chi-test），excel计算](https://www.bilibili.com/video/av87641550)
+
 
 
