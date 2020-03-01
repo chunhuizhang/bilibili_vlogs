@@ -20,5 +20,5 @@
 
 - stats/, [【统计】统计检验（从t-distribution（t分布）到t-test（t检验），t-score（t-统计量）以及卡方检验（chi-test），excel计算](https://www.bilibili.com/video/av87641550)
 
-- stats/gini_index.py, []()
+- stats/gini_index.py, [【统计】从MAD（mean absolute deviation）到Gini系数的计算（python实现）](https://www.bilibili.com/video/av92773925)
 
