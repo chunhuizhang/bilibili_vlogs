@@ -1,5 +1,10 @@
 
 
+## 0. 计算机科学基础
+
+- algo/sort_and_search.py, [【Python番外】Python排序（TimSort，list.sort/sorted）与搜索（bisect_left/bisect_right/insort）
+](https://www.bilibili.com/video/av89285852)
+
 
 ## 1. 趣味计算机科学
 
