@@ -4,6 +4,7 @@
 
 - algo/sort_and_search.py, [【Python番外】Python排序（TimSort，list.sort/sorted）与搜索（bisect_left/bisect_right/insort）
 ](https://www.bilibili.com/video/av89285852)
+- algo/lexicographic_order.py, [【计算机基础算法】从排列到随机，字典序（lexicographic order）排列算法的实现](https://www.bilibili.com/video/BV1e7411y7cZ)
 
 
 ## 1. 趣味计算机科学
