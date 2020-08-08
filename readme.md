@@ -21,6 +21,8 @@
 ## 3. 神经网络与计算机视觉
 
 - cv/image_similarity, [【计算机视觉】从图像距离（图像相似性）的计算（ahash/dhash/phash/whash）到以图搜索的实现（deep ranking）（一）](https://www.bilibili.com/video/av77627995)
+- cv/holiday_similarity, [【计算机视觉】基于 Siamese network 的图像相似性计算（keras 预训练网络及微调，多输入单输出）](https://www.bilibili.com/video/BV1cJ411v7vp)
+
 
 ## 4. 统计
 
