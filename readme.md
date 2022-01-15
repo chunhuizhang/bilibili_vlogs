@@ -7,6 +7,7 @@
 - algo/lexicographic_order.py, [【计算机基础算法】从排列到随机，字典序（lexicographic order）排列算法的实现](https://www.bilibili.com/video/BV1e7411y7cZ)
 
 
+
 ## 1. 趣味计算机科学
 
 - monte_carlo_triangle.py, [【计算机科学】蒙特卡洛方法计算“一棍砍两刀”构成三角形的概率](https://www.bilibili.com/video/av75100858/)
