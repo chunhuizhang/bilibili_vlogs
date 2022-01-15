@@ -12,3 +12,5 @@ x_aug = np.hstack([np.ones_like(x), x])
 beta = inv(x_aug.transpose().dot(x_aug)).dot(x_aug.transpose()).dot(y)
 
 print(beta)
+
+
