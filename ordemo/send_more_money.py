@@ -50,5 +50,5 @@ solver.parameters.enumerate_all_solutions = True
 
 solver.Solve(model, solution_printer)
 
-print(
-    f"  {solver.Value(S)}{solver.Value(E)}{solver.Value(N)}{solver.Value(D)}\n+ {solver.Value(M)}{solver.Value(O)}{solver.Value(R)}{solver.Value(E)}\n={solver.Value(M)}{solver.Value(O)}{solver.Value(N)}{solver.Value(E)}{solver.Value(Y)}")
+# print(
+#     f"  {solver.Value(S)}{solver.Value(E)}{solver.Value(N)}{solver.Value(D)}\n+ {solver.Value(M)}{solver.Value(O)}{solver.Value(R)}{solver.Value(E)}\n={solver.Value(M)}{solver.Value(O)}{solver.Value(N)}{solver.Value(E)}{solver.Value(Y)}")
