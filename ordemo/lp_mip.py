@@ -5,7 +5,8 @@ import numpy as np
 # solver = pywraplp.Solver('Maximize army power', pywraplp.Solver.GLOP_LINEAR_PROGRAMMING)
 # solver = pywraplp.Solver('Maximize army power', pywraplp.Solver.GLPK_LINEAR_PROGRAMMING)
 # solver = pywraplp.Solver('Maximize army power', pywraplp.Solver.CLP_LINEAR_PROGRAMMING)
-solver = pywraplp.Solver('Maximize army power', pywraplp.Solver.CBC_MIXED_INTEGER_PROGRAMMING)
+# solver = pywraplp.Solver('Maximize army power', pywraplp.Solver.CBC_MIXED_INTEGER_PROGRAMMING)
+solver = pywraplp.Solver.CreateSolver('SCIP')
 
 
 swordsmen = solver.IntVar(0, solver.infinity(), 'swordsmen')
