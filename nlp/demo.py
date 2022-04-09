@@ -4,8 +4,8 @@ import numpy as np
 
 def test1():
     fun = lambda x: x**2 + 2*x - 3
-    x0 = 1
-    res = minimize(fun, [x0], bounds=[[0, None]], )
+    x0 = np.asarray(1)
+    res = minimize(fun, x0, bounds=[[0, None]], )
     print(res)
 
 
