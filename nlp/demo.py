@@ -9,7 +9,6 @@ def test1():
     print(res)
 
 
-
 def test2():
     fun = lambda x: (x[0]-2)**2 + 4*(x[1]-1)**2
     x0 = [0, 0]
