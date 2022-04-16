@@ -4,6 +4,7 @@ from ortools.sat.python import cp_model
 
 # https://developers.google.com/optimization/cp/cryptarithmetic
 
+
 class VarArraySolutionPrinter(cp_model.CpSolverSolutionCallback):
     """Print intermediate solutions."""
 
