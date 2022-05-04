@@ -1,0 +1,9 @@
+// traffic-light
+digraph {
+	RED -> RED [label=timer_le_20]
+	RED -> GREEN [label=timer_eq_20]
+	GREEN -> GREEN [label=timer_le_15]
+	GREEN -> YELLOW [label=timer_eq_15]
+	YELLOW -> YELLOW [label=timer_le_5]
+	YELLOW -> RED [label=timer_eq_5]
+}
