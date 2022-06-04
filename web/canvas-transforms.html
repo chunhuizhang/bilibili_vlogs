@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Canvas Rotation</title>
+    <style>
+        html{
+            background-color: #999;
+        }
+        #canvas{
+            background-color: #fff;
+            border: 1px solid #333;
+            width: 70%;
+            margin: 1rem auto;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="canvas"></canvas>
+    <script>
+        let canvas, ctx;
+
+        document.addEventListener('DOMContentLoaded', ()=>{
+            canvas = document.getElementById('canvas');
+            ctx = canvas.getContext('2d');
+            canvas.width = 600;
+            canvas.height = 800;
+            ctx.fillStyle = 'cornflowerblue';
+            ctx.strokeStyle = '#ccc';
+            ctx.lineWidth = 2;
+            ctx.textAlign = 'start';
+            ctx.font = 'normal 30px Arial';
+            drawGrid(100);
+
+            let x = 100;
+            let y = 100;
+            ctx.save();  //creates a save point
+            ctx.beginPath();
+            ctx.translate(200, 200);
+            ctx.fillText('translate', 10, 30);
+            ctx.fill();
+            ctx.closePath();
+            ctx.restore(); //go back to the last save point
+
+            ctx.save();
+            ctx.beginPath();
+            ctx.arc(0, 0, 10, 0, Math.PI*2);
+            ctx.rotate(Math.PI/4);        //3.14 radians 180 deg
+            ctx.fillText('rotate', 300, 0);
+            ctx.fill();
+            ctx.closePath();
+            ctx.restore();
+
+            ctx.beginPath();
+            ctx.translate(100, 500);
+            ctx.scale(1, -1);
+            ctx.fillText('scale', x, y);
+            ctx.fill();
+            ctx.closePath();
+
+
+        });
+
+        function drawGrid(gap){
+            ctx.beginPath();
+            for(x=gap; x<canvas.width; x=x+gap){
+                ctx.moveTo(x, 0);
+                ctx.lineTo(x, canvas.height);
+            }
+            for(let y=gap; y<canvas.height; y=y+gap){
+                ctx.moveTo(0, y);
+                ctx.lineTo(canvas.height, y);
+            }
+            ctx.stroke();
+            ctx.closePath();
+        }
+    </script>
+</body>
+</html>

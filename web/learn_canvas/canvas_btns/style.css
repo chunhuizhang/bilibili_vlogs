@@ -1,0 +1,18 @@
+#container
+{
+  height: 400px;
+  position: relative;
+  width: 400px;
+}
+#viewport
+{
+  height: 100%;
+  width: 100%;
+}
+#controls
+{
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  width: 100%;
+}

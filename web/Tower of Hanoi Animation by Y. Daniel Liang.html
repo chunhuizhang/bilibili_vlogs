@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<!-- saved from url=(0065)https://yongdanielliang.github.io/animation/web/TowerOfHanoi.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Tower of Hanoi Animation by Y. Daniel Liang</title>
+    
+
+    <link rel="stylesheet" href="./Tower of Hanoi Animation by Y. Daniel Liang_files/jquery-ui.css">
+    <script type="text/javascript" async="" src="./Tower of Hanoi Animation by Y. Daniel Liang_files/analytics.js"></script><script src="./Tower of Hanoi Animation by Y. Daniel Liang_files/jquery-latest.js"></script>
+<!--    <script src="jquery-1.10.2.js"></script>-->
+    <script src="./Tower of Hanoi Animation by Y. Daniel Liang_files/jquery-ui.js"></script>
+    <script type="text/javascript" src="./Tower of Hanoi Animation by Y. Daniel Liang_files/GetElementPosition.js"></script>
+    <link rel="stylesheet" type="text/css" href="./Tower of Hanoi Animation by Y. Daniel Liang_files/codecolor.css">
+    <link rel="stylesheet" type="text/css" href="./Tower of Hanoi Animation by Y. Daniel Liang_files/boxes.css">
+    <script src="./Tower of Hanoi Animation by Y. Daniel Liang_files/LinkedList.js"></script>
+    <script src="./Tower of Hanoi Animation by Y. Daniel Liang_files/Queue.js"></script>
+
+    <style>
+      .status {
+        color: chocolate;
+      }
+
+      .vbar {
+        background-color: chocolate;
+        /*          opacity: 0.25;*/
+        position: absolute;
+        width: 3px;
+        height: 130px;
+        padding: 3px;
+        margin-top: 0px;
+        top: 89px;
+        left: 152px;
+      }
+
+      .hbar {
+        background-color: chocolate;
+        /*          opacity: 0.25;*/
+        position: absolute;
+        width: 150px;
+        height: 3px;
+        padding: 3px;
+        margin-top: 0px;
+        top: 219px;
+        left: 50px;
+      }
+
+      .towerText {
+        position: absolute;
+        color: black;
+        font-family: monospace;
+        font-size: 14px;
+        font-weight: bold;
+      }
+
+      .disc {
+        position: absolute;
+        color: #EB0D1B;
+        font-family: monospace;
+        font-size: 14px;
+        font-weight: bold;
+        border: 1px solid black;
+        height: 20px;
+        width: 50px;
+      }
+
+      #highlight {
+        background-color:#37826C;
+        opacity: 0.25;
+        position:absolute;
+        width:318px;
+        height: 10px;
+        padding: 3px;
+        margin-top: 0px;
+        top: 89px;
+        left: 72px;
+      }
+
+      #explanation {
+        color: purple;
+        position:absolute;
+        width: 158px;
+        height: 40px;
+        padding: 3px;
+        margin-top:5px;
+        top: 75px;
+        left: 448px;
+        font-size: 90%;
+        font-family: Times New Roman;
+      }
+
+      #commandPrompt {
+        font-family: times;  border: 0px solid gray; text-align: left;  
+        position:absolute;         
+        width: 217.515px;
+        height: 10px;
+        top: 90px;
+        left: 600px;
+        font-size: 80%;
+      }
+
+      #commandPromptHeader {
+        background-color: navy; color: white; font-size: 90%;
+        border-bottom: 0px solid gray; border-right: 0px solid gray;
+        text-align: center;
+      }
+
+      #commandPromptContent {
+        background-color: white;
+        color: black;
+        width: 212px;
+        height: 40px;
+        font-family: courier; 
+        font-size: 80%;
+        font-weight: bold;
+      }
+
+      #startButton {
+        display:inline; 
+        width: 150px;
+        height: 30px;
+        color:#fff;
+        font-size: 14px;
+        background: #3070a8;
+        border: none;
+      }
+    </style>
+
+    <script>
+      numberOfDiscs = 6;
+      
+      $(function() {
+        var spinner = $("#spinner").spinner();
+        $("#spinner").spinner({value: 3, min: 1, max: numberOfDiscs});
+
+        $("#spinner").spinner("value", 3);
+
+        $("#disable").click(function() {
+          if (spinner.spinner("option", "disabled")) {
+            spinner.spinner("enable");
+          } else {
+            spinner.spinner("disable");
+          }
+        });
+        $("#destroy").click(function() {
+          if (spinner.spinner("instance")) {
+            spinner.spinner("destroy");
+          } else {
+            spinner.spinner();
+          }
+        });
+        $("#getvalue").click(function() {
+          jAlert(spinner.spinner("value"));
+        });
+        $("#setvalue").click(function() {
+          spinner.spinner("value", 5);
+        });
+
+        $("button").button();
+      });
+
+      n = 3; // The number of discs
+      color = [];
+      color[0] = "crimson";
+      color[1] = "cornflowerblue";
+      color[2] = "beige";
+      color[3] = "purple";
+      color[4] = "aqua";
+      color[5] = "darkorange";
+      color[6] = "goldenrod";
+      color[7] = "#37826C";
+
+      number1 = 8;
+      number2 = 7;
+      answer = 15;
+      result = true;
+
+      steps = 7;
+      animationSpeed = 500;
+      slowAnimationSpeed = 1500;
+      lineOffSet = 15;
+      highLight = [];
+      highLight[0] = new HighLight();
+      highLight[0].top = 95;
+      highLight[0].left = 62;
+      highLight[0].width = 318;
+
+      highLight[1] = new HighLight();
+      highLight[1].top = 109;
+      highLight[1].left = 60 + 20;
+      highLight[1].width = 417;
+
+      highLight[2] = new HighLight();
+      highLight[2].top = 125;
+      highLight[2].left = 60 + 20;
+      highLight[2].width = 457;
+
+      highLight[3] = new HighLight();
+      highLight[3].top = 169;
+      highLight[3].left = 60 + 20;
+      highLight[3].width = 304;
+
+      highLight[4] = new HighLight();
+      highLight[4].top = 198;
+      highLight[4].left = 60 + 20;
+      highLight[4].width = 385;
+      highLight[4].height = 25;
+
+      highLight[5] = new HighLight();
+      highLight[5].top = 243;
+      highLight[5].left = 60 + 20;
+      highLight[5].width = 232;
+
+      highLight[6] = new HighLight();
+      highLight[6].top = 273;
+      highLight[6].left = 60 + 20;
+      highLight[6].width = 435;
+      highLight[6].height = 38;
+
+      highLight[7] = new HighLight();
+      highLight[7].top = 314;
+      highLight[7].width = 6;
+      highLight[7].left = 62;
+
+      explanation = [];
+      explanation[0] = new Explanation();
+      explanation[0].innerHTML = "The program starts the execution from the main method.";
+      explanation[0].top = 95;
+      explanation[0].left = 548;
+
+      explanation[1] = new Explanation();
+      explanation[1].innerHTML = "The statement generates a random number " + number1 + " and assigns it to variable number1.";
+      explanation[1].top = 107;
+      explanation[1].left = 550;
+
+      explanation[2] = new Explanation();
+      explanation[2].innerHTML = "The statement assigns a random integer to number2.";
+      explanation[2].top = 137;
+      explanation[2].left = 570;
+
+      explanation[3] = new Explanation();
+      explanation[3].innerHTML = "The statement creates an object for performing console input and assigns the object to the reference variable named input.";
+      explanation[3].top = 157;
+      explanation[3].left = 430;
+      explanation[3].width = 470;
+
+      explanation[4] = new Explanation();
+      explanation[4].innerHTML = "The statement displays a prompting message for the user input.";
+      explanation[4].top = 190;
+      explanation[4].left = 480;
+      explanation[4].width = 160;
+
+      explanation[5] = new Explanation();
+      explanation[5].innerHTML = "The statement receives an input from the user.";
+      explanation[5].top = 225;
+      explanation[5].left = 325;
+      explanation[5].width = 205;
+
+      explanation[6] = new Explanation();
+      explanation[6].innerHTML = "The statement displays the result.";
+      explanation[6].top = 257;
+      explanation[6].left = 325;
+      explanation[6].width = 205;
+
+      explanation[7] = new Explanation();
+      explanation[7].innerHTML = "The main method exits. The program is finished.";
+      explanation[7].top = 320;
+      explanation[7].left = 128;
+
+      commandPrompt = [];
+      commandPrompt[0] = new CommandPrompt();
+      commandPrompt[0].innerHTML = "";
+      commandPrompt[0].top = 95;
+      commandPrompt[0].left = 700;
+      commandPrompt[0].isVisible = false;
+      commandPrompt[1] = new CommandPrompt();
+      commandPrompt[1].isVisible = false;
+      commandPrompt[2] = new CommandPrompt();
+      commandPrompt[2].isVisible = false;
+      commandPrompt[2].innerHTML = "Enter a number for radius: ";
+      commandPrompt[2].top = 161;
+      commandPrompt[2].left = 640;
+
+      commandPrompt[3] = new CommandPrompt();
+      commandPrompt[3].isVisible = false;
+
+      commandPrompt[4] = new CommandPrompt();
+      commandPrompt[4].isVisible = true;
+      commandPrompt[4].innerHTML = "What is " + number1 + " + " + number2 + "? ";
+      commandPrompt[4].top = 200;
+      commandPrompt[4].left = 640;
+
+      commandPrompt[5] = new CommandPrompt();
+      commandPrompt[5].isVisible = true;
+      commandPrompt[5].innerHTML = commandPrompt[4].innerHTML + answer;
+      commandPrompt[5].top = 232;
+      commandPrompt[5].left = 550;
+
+      commandPrompt[6] = new CommandPrompt();
+      commandPrompt[6].isVisible = true;
+      commandPrompt[6].innerHTML = commandPrompt[5].innerHTML + "\n" + number1 + " + " + number2 + " = " + answer + " is " + result;
+      commandPrompt[6].top = 232;
+      commandPrompt[6].left = 550;
+
+      commandPrompt[7] = new CommandPrompt();
+      commandPrompt[7].isVisible = false;
+      commandPrompt[7].innerHTML = commandPrompt[6].innerHTML + "";
+      commandPrompt[7].top = 329;
+      commandPrompt[7].left = 300;
+
+      currentLine = 0;
+
+      function init() {
+        posLoc = getElementPos(document.getElementById('program'));
+        x = posLoc.x;
+        y = posLoc.y;
+
+        $("#status").hide();
+        $("#v1").css("top", y + 90).css("left", x + 115 - 3 / 2);
+        $("#v2").css("top", y + 90).css("left", x + 305 - 3 / 2);
+        $("#v3").css("top", y + 90).css("left", x + 495 - 3 / 2);
+        $("#h1").css("top", y + 220).css("left", x + 40);
+        $("#h2").css("top", y + 220).css("left", x + 230);
+        $("#h3").css("top", y + 220).css("left", x + 420);
+        $("#t1").css("top", y + 230).css("left", x + 90);
+        $("#t2").css("top", y + 230).css("left", x + 280);
+        $("#t3").css("top", y + 230).css("left", x + 470);
+
+        offset = n * 20;
+        for (var i = 1; i <= n; i++) {
+          $("#d" + i).show();
+          $("#d" + i).css("top", y + 220 - (n + 1 - i) * 20)
+                  .css("background-color", color[i])
+                  .css("left", x + 40 + (8 - i) * 7)
+                  .css("width", 150 - (8 - i) * 14);
+        }
+
+        for (var i = 7; i > n; i--) {
+          $("#d" + i).hide(); // css("display", "none");
+        }
+      }
+    </script>
+  
+<!-- Global Site Tag (gtag.js) - Google Analytics -->
+<script async="" src="./Tower of Hanoi Animation by Y. Daniel Liang_files/js"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments)};
+  gtag('js', new Date());
+  gtag('config', 'UA-89940905-27');
+</script>
+
+<script type="text/javascript" src="./Tower of Hanoi Animation by Y. Daniel Liang_files/logging.js"></script>
+<style type="text/css" id="videoTapeCtxM-style-node">#videoTapeCtxM{display:block;width:auto;text-align:center;border-top:1px solid grey;box-shadow:5px 5px 5px #555;background-color:white;}#videoTapeCtxM a{border:1px solid grey;border-top:none;display:block;color:blue;width:auto;cursor:hand;margin:0px;padding:0px 3px 0px 3px;}#videoTapeCtxM a:hover{background-color:#AAA;}</style></head>
+
+
+
+  <body onload="init()" onresize="draw()" style="font-family: times new roman;" chromeextension:video-tape="true">   
+    <h3 style="text-align:center; font: bold">Tower of Hanoi <a href="https://yongdanielliang.github.io/animation/animation.html">Animation</a> by 
+      <a href="https://yongdanielliang.github.io/">Y. Daniel Liang</a></h3>
+    <p style="alignment-adjust: central; text-align: center; max-wdith: 800px; margin-left: auto; margin-right: auto">
+      Usage: Click the Start button to move all the discs from Tower A to Tower B. Click the Reset button to reset to the initial state.
+    </p>
+
+    <div id="program" style="width: 610px; height: 250px; font-family: courier; font-size: 100.5%; margin: 0px auto; border: 1px solid #EB0D1B; text-align: left">
+
+      <div id="v1" class="vbar" style="top: 183.438px; left: 647.5px;"></div>
+      <div id="v2" class="vbar" style="top: 183.438px; left: 837.5px;"></div>
+      <div id="v3" class="vbar" style="top: 183.438px; left: 1027.5px;"></div>
+      <div id="h1" style="left: 574px; top: 313.438px;" class="hbar"></div>
+      <div id="h2" style="left: 764px; top: 313.438px;" class="hbar"></div>
+      <div id="h3" style="left: 954px; top: 313.438px;" class="hbar"></div>
+      <div id="t1" style="left: 624px; top: 323.438px;" class="towerText">Tower A</div>
+      <div id="t2" class="towerText" style="top: 323.438px; left: 814px;">Tower B</div>
+      <div id="t3" class="towerText" style="top: 323.438px; left: 1004px;">Tower C</div>
+      <div id="d1" class="disc" style="top: 253.438px; background-color: cornflowerblue; left: 623px; width: 52px;"></div>
+      <div id="d2" class="disc" style="top: 273.438px; background-color: beige; left: 616px; width: 66px;"></div>
+      <div id="d3" class="disc" style="top: 293.438px; background-color: rgb(128, 0, 128); left: 609px; width: 80px;"></div>
+      <div id="d4" class="disc" style="display: none;"></div>
+      <div id="d5" class="disc" style="display: none;"></div>
+      <div id="d6" class="disc" style="display: none;"></div>
+<!--      <div id = "d7" class = "disc"></div>
+      <div id = "d8" class = "disc"></div>-->
+
+
+    </div>
+    <div style="text-align: center; margin-top: 1em">
+      <span style="border: 0px solid #37826C; padding: 3px">
+        <label for="spinner" style="font-weight: bold">Discs:</label>
+        <span class="ui-spinner ui-widget ui-widget-content ui-corner-all"><input id="spinner" name="value" style="width: 25px;" class="ui-spinner-input" autocomplete="off" role="spinbutton" aria-valuemin="1" aria-valuemax="6" aria-valuenow="3"><a class="ui-spinner-button ui-spinner-up ui-corner-tr ui-button ui-widget ui-state-default ui-button-text-only" tabindex="-1" role="button"><span class="ui-button-text"><span class="ui-icon ui-icon-triangle-1-n">▲</span></span></a><a class="ui-spinner-button ui-spinner-down ui-corner-br ui-button ui-widget ui-state-default ui-button-text-only" tabindex="-1" role="button"><span class="ui-button-text"><span class="ui-icon ui-icon-triangle-1-s">▼</span></span></a></span>
+
+        <button id="start" type="button" class="button ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" onclick="start()" role="button"><span class="ui-button-text">Start</span></button>  
+        <button id="reset" type="button" class="button ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" onclick="reset()" role="button"><span class="ui-button-text">Reset</span></button>
+      </span>    
+    </div>
+    <div style="text-align: center; margin-top: 1em">
+      <span id="status" style="background-color: chocolate; color: white; text-align: center; margin-left: auto; margin-right: auto; display: none;">The number of moves for 3 discs is 7</span>
+    </div>
+
+    <script type="text/javascript">
+
+      $("#nextButton").click(function() {
+        currentLine = currentLine + 1;
+        step();
+      });
+      $("#prevButton").click(function() {
+        currentLine = currentLine - 1;
+        step();
+      });
+
+      count = [];
+      $("#start").click(function() {
+        if (isStarted) {
+          jAlert("Click Reset and then Start");
+          return;
+        }
+        else {
+          isStarted = true;
+        }
+
+        n = $("#spinner").val();
+        count[0] = n;
+        count[1] = 0;
+        count[2] = 0;
+        moveDisks(n, 0, 1, 2);
+        $("#status").show();
+        $("#status").text("The number of moves for " +
+                n + " discs is " + queue.getSize());
+//          tuple = queue.dequeue();
+//          jAlert(tuple.n + ", " + tuple.fromTower + ", " + tuple.toTower);
+        animateMoves(queue);
+      });
+
+      function animateMoves(queue) {
+        d = 0;
+        if (!queue.isEmpty()) {
+          tuple = queue.dequeue();
+//          jAlert(tuple.n + ", " + tuple.fromTower + ", " + tuple.toTower);
+
+          left1 = x + (40 + 150) * tuple.toTower + 40 + (8 - tuple.n) * 7;
+          top1 = y + 220 - (count[tuple.toTower] + 1) * 20;
+          count[tuple.fromTower]--;
+          count[tuple.toTower]++;
+//          jAlert( "OVER " + tuple.n + ", " + tuple.fromTower + ", " + tuple.toTower);
+
+          $("#d" + tuple.n).animate({top: y + 40}, slowAnimationSpeed, function() {
+            $("#d" + tuple.n).animate({left: left1}, slowAnimationSpeed, function() {
+              $("#d" + tuple.n).animate({top: top1, left: left1}, slowAnimationSpeed, function() {
+                animateMoves(queue);
+              });
+            });
+          });
+
+//          $("#d" + tuple.n).animate({top: top1, left: left1}, slowAnimationSpeed);
+//          $("#flyingReturnValue").animate({top: value1Top + 40, left: value1Left}, slowAnimationSpeed);
+          d++;
+        }
+      }
+      isStarted = false;
+      $("#reset").click(function() {
+        isStarted = false;
+        n = 3;
+        $("#spinner").val(3);
+        queue = new Queue();
+        for (var i = 1; i <= 6; i++) {
+          $("#d" + i).stop();
+        }
+        init();
+      });
+
+      $("#spinner").click(function() {
+        jAlert("clicked");
+        n = $("#spinner").val();
+        init();
+      });
+
+      $(function() {
+        var temp = $("#spinner").spinner({
+          step: 1,
+          spin: function(event, ui) {
+            handleSpinnerValue(ui.value);
+          }
+        });
+      });
+
+      function handleSpinnerValue(txtValue)
+      {
+        if (isStarted) {
+          jAlert("Please click Reset before setting the disc numbers");
+        }
+        else {
+          n = txtValue;
+          init();
+        }
+      }
+
+      function fly(n, fromTower, toTower) {
+        left1 = x + (40 + 150) * toTower + 40 + (8 - n) * 7;
+        top1 = y + 220 - (count[toTower] + 1) * 20;
+        $("#d" + n).animate({top: y + 40}, slowAnimationSpeed);
+        $("#d" + n).animate({left: left1}, slowAnimationSpeed);
+        $("#d" + n).animate({top: top1, left: left1}, slowAnimationSpeed);
+//          $("#flyingReturnValue").animate({top: value1Top + 40, left: value1Left}, slowAnimationSpeed);
+        count[fromTower]--;
+        count[toTower]++;
+      }
+
+      queue = new Queue();
+      function moveDisks(n, fromTower, toTower, auxTower) {
+        if (n == 1) { // Stopping condition
+//              jAlert("Move disk " + n + " from " +
+//                      fromTower + " to " + toTower);
+          tuple = new Object();
+          tuple.n = n;
+          tuple.toTower = toTower;
+          tuple.fromTower = fromTower;
+          queue.enqueue(tuple);
+          //   fly(n, fromTower, toTower);
+        }
+        else {
+          moveDisks(n - 1, fromTower, auxTower, toTower);
+          // fly(n, fromTower, toTower);
+          tuple = new Object();
+          tuple.n = n;
+          tuple.toTower = toTower;
+          tuple.fromTower = fromTower;
+          queue.enqueue(tuple);
+          moveDisks(n - 1, auxTower, toTower, fromTower);
+        }
+      }
+
+// Constructor for Tuple
+      function Tuple(n, fromTower, toTower) {
+        this.n = n;
+        this.toTower = toTower;
+        this.fromTower = fromTower;
+      }
+
+      function startOver() {
+        init();
+//          document.getElementById('nextButton').style.display = 'none';
+//          document.getElementById('startOverButton').style.display = 'none';
+//          document.getElementById('prevButton').style.display = 'none';
+//          document.getElementById('startButton').style.visibility = 'visible';
+//          document.getElementById('startButton').style.display = 'inline';
+//          document.getElementById('startButton').innerHTML = 'Restart Animation';
+
+//          document.getElementById('explanation').style.visibility = 'hidden';
+//          document.getElementById('highlight').style.visibility = 'hidden';
+//          document.getElementById('commandPrompt').style.visibility = 'hidden';
+////          document.getElementById('explanation').style.visibility = 'hidden';
+//          currentPromptContent = "";
+//          currentLine = 0;
+//          finished = false;
+//          document.getElementById('memory').style.visibility = 'hidden';
+//          document.getElementById('radius').style.visibility = 'hidden';
+//          document.getElementById('area').style.visibility = 'hidden';
+      }
+
+      function step() {
+        pos = getElementPos(document.getElementById('line' + currentLine));
+//          $("#explanation").animate({top: explanation[currentLine].top, left: explanation[currentLine].left,
+//              width: explanation[currentLine].width}, animationSpeed);
+//          $("#commandPrompt").animate({top: commandPrompt[currentLine].top, left: commandPrompt[currentLine].left}, animationSpeed);
+//
+        if (currentLine == 0) {
+          document.getElementById('prevButton').style.visibility = 'hidden';
+          document.getElementById('memory').style.visibility = 'hidden';
+          document.getElementById('flyingRadius').style.visibility = 'hidden';
+          document.getElementById('flyingRadius').innerHTML = '';
+          document.getElementById('value1').innerHTML = '';
+          document.getElementById('radius').style.visibility = 'hidden';
+          $("#explanation").animate({top: pos0.y - 30,
+            left: pos0.x + pos0.w + 20,
+            width: 200, height: explanation[currentLine].height}, 'fast');
+          $("#commandPrompt").animate({top: pos2.y + 15,
+            left: pos0.x + pos0.w + 15, }, 'fast');
+          document.getElementById('commandPrompt').style.visibility = 'hidden';
+        }
+        else if (currentLine == 1) {
+          document.getElementById('prevButton').style.visibility = 'visible';
+          document.getElementById('prevButton').style.display = 'inline';
+          number1 = Math.floor(Math.random() * 10);
+          explanation[1].innerHTML = "The statement generates a random number " + number1 + " and assigns it to variable number1.";
+          document.getElementById('memory').style.visibility = 'visible';
+          document.getElementById('flyingRadius').style.visibility = 'visible';
+          document.getElementById('flyingRadius').innerHTML = '';
+          document.getElementById('value1').innerHTML = '';
+          document.getElementById('radius').style.visibility = 'visible';
+//
+//          document.getElementById('value1').style.visibility = 'visible';
+
+          posLoc1 = getElementPos(document.getElementById('loc1'));
+          $("#highlight").animate({top: highLight[currentLine].top, left: highLight[currentLine].left,
+            width: highLight[currentLine].width}, animationSpeed, function() {
+            $("#flyingRadius").css("top", posLoc1.y).css("left", posLoc1.x);
+            document.getElementById('flyingRadius').innerHTML = number1;
+            $("#flyingRadius").animate(
+                    {top: value1Top - 50, left: value1Left}, slowAnimationSpeed);
+          });
+          document.getElementById('flyingArea').style.visibility = 'hidden';
+          document.getElementById('value2').innerHTML = '';
+          document.getElementById('area').style.visibility = 'hidden';
+          $("#explanation").animate({top: pos.y + 30,
+            left: variableLeft,
+            width: 200, height: explanation[currentLine].height}, 'fast');
+        }
+        else if (currentLine == 2) {
+          document.getElementById('flyingArea').innerHTML = '';
+          number2 = Math.floor(Math.random() * 10);
+          explanation[2].innerHTML = "The statement generates a random number " + number2 + " and assigns it to variable number2.";
+          commandPrompt[4].innerHTML = "What is " + number1 + " + " + number2 + "? ";
+          $("#explanation").animate({top: pos.y + 15,
+            left: variableLeft,
+            width: 200, height: explanation[currentLine].height}, 'fast');
+          document.getElementById('flyingArea').style.visibility = 'visible';
+          document.getElementById('value2').innerHTML = '';
+          document.getElementById('area').style.visibility = 'visible';
+//
+//          document.getElementById('value1').style.visibility = 'visible';
+
+          posLoc2 = getElementPos(document.getElementById('loc2'));
+          $("#highlight").animate({top: highLight[currentLine].top, left: highLight[currentLine].left,
+            width: highLight[currentLine].width, height: highLight[currentLine].height}, animationSpeed, function() {
+            $("#flyingArea").css("top", posLoc2.y).css("left", posLoc2.x);
+            document.getElementById('flyingArea').innerHTML = number2;
+            $("#flyingArea").animate(
+                    {top: value1Top - 30, left: value1Left}, slowAnimationSpeed);
+          });
+        }
+        else if (currentLine == 3) {
+          pos3 = getElementPos(document.getElementById('line' + currentLine));
+          $("#explanation").animate({top: pos3.y - 30,
+            left: variableLeft,
+            width: 200, height: explanation[currentLine].height}, 'fast');
+        }
+        else if (currentLine == 4) {
+          document.getElementById('flyingAnswer').style.visibility = 'hidden';
+          document.getElementById('flyingAnswer').innerHTML = '';
+          document.getElementById('value3').innerHTML = '';
+          document.getElementById('answer').style.visibility = 'hidden';
+          $("#explanation").animate({top: pos3.y - 20,
+            left: variableLeft,
+            width: 200, height: explanation[currentLine].height}, 'fast');
+          pos5 = getElementPos(document.getElementById('line5'));
+          pos7 = getElementPos(document.getElementById('line7'));
+          $("#commandPrompt").animate({top: pos7.y - 10,
+            left: pos5.x + pos5.w + 45, }, 'fast');
+        }
+        else if (currentLine == 5) {
+          document.getElementById('memory').style.visibility = 'visible';
+          document.getElementById('flyingAnswer').style.visibility = 'visible';
+          document.getElementById('flyingAnswer').innerHTML = '';
+          document.getElementById('value3').innerHTML = '';
+          document.getElementById('answer').style.visibility = 'visible';
+          document.getElementById('explanation').style.visibility = 'hidden';
+          answer = prompt("Here is your chance to enter an answer for " + number1 + " + " + number2 + "? ");
+          result = (answer == number1 + number2);
+          explanation[5].innerHTML = "The statement receives the input " + answer + " from the user.";
+          commandPrompt[5].innerHTML = commandPrompt[4].innerHTML + answer;
+          commandPrompt[6].innerHTML = commandPrompt[5].innerHTML + "\n" + number1 + " + " + number2 + " = " + answer + " is " + result;
+          commandPrompt[7].innerHTML = commandPrompt[6].innerHTML + "";
+          document.getElementById('explanation').style.visibility = 'visible';
+          $("#explanation").animate({top: pos.y - 10,
+            left: pos.x + pos.w + 20,
+            width: 200, height: explanation[currentLine].height}, 'fast');
+          pos5 = getElementPos(document.getElementById('line5'));
+          pos7 = getElementPos(document.getElementById('line7'));
+          $("#commandPrompt").animate({top: pos7.y - 10,
+            left: pos5.x + pos5.w + 45, }, 'fast');
+          posLoc3 = getElementPos(document.getElementById('loc3'));
+          $("#highlight").animate({top: highLight[currentLine].top, left: highLight[currentLine].left,
+            width: highLight[currentLine].width, height: highLight[currentLine].height}, animationSpeed, function() {
+            $("#flyingAnswer").css("top", posLoc3.y).css("left", posLoc3.x);
+            document.getElementById('flyingAnswer').innerHTML = answer;
+            $("#flyingAnswer").animate({top: value1Top + 55, left: value1Left}, slowAnimationSpeed);
+          });
+        }
+        else if (currentLine == 6) {
+          $("#explanation").animate({top: pos.y - 30,
+            left: pos.x + pos.w - 140,
+            width: 200, height: explanation[currentLine].height}, 'fast');
+          $("#commandPrompt").animate({top: pos7.y - 10,
+            left: pos5.x + pos5.w + 45, }, 'fast');
+        }
+        else if (currentLine == 7) {
+          $("#explanation").animate({top: pos.y - 5,
+            left: pos.x + pos.w + 40,
+            width: 200, height: explanation[currentLine].height}, 'fast');
+          $("#commandPrompt").animate({top: pos7.y - 10,
+            left: pos5.x + pos5.w + 45, }, 'fast');
+          document.getElementById('startButton').style.visibility = 'visible';
+          document.getElementById('startButton').style.display = 'inline';
+          document.getElementById('startButton').innerHTML = 'Restart Animation';
+        }
+        else {
+          $("#highlight").animate({top: highLight[currentLine].top, left: highLight[currentLine].left,
+            width: highLight[currentLine].width, height: highLight[currentLine].height}, animationSpeed);
+        }
+
+        if (currentLine == 5) {
+          document.getElementById('commandPrompt').style.visibility = 'visible';
+        }
+
+        if (commandPrompt[currentLine].isVisible) {
+          document.getElementById('commandPrompt').style.visibility = 'visible';
+          document.getElementById('commandPromptContent').innerHTML = commandPrompt[currentLine].innerHTML;
+        }
+        else {
+          document.getElementById('commandPrompt').style.visibility = 'hidden';
+        }
+
+//          if (currentLine == 0) {
+//              pos = getElementPos(document.getElementById('line0'));
+//          }
+//          else if (currentLine == 1) {
+//              pos = getElementPos(document.getElementById('line1'));
+//          }
+//          else if (currentLine == 2) {
+//              pos = getElementPos(document.getElementById('line2'));
+//          }
+//          else if (currentLine == 3) {
+//              pos = getElementPos(document.getElementById('line3'));
+//          }
+//          else if (currentLine == 4) {
+//              pos = getElementPos(document.getElementById('line4'));
+//          }
+//          else if (currentLine == 5) {
+//              pos = getElementPos(document.getElementById('line5'));
+//          }
+//          else if (currentLine == 6) {
+//              pos = getElementPos(document.getElementById('line6'));
+//          }
+//          else if (currentLine == 7) {
+//              pos = getElementPos(document.getElementById('line7'));
+//          }
+
+        document.getElementById('explanation').innerHTML = explanation[currentLine].innerHTML;
+        $("#highlight").animate({top: pos.y, left: pos.x, width: pos.w, height: pos.h}, animationSpeed);
+        if (currentLine == steps) {
+          document.getElementById('nextButton').style.visibility = 'hidden';
+          document.getElementById('prevButton').style.visibility = 'hidden';
+          document.getElementById('memory').style.visibility = 'hidden';
+          document.getElementById('radius').style.visibility = 'hidden';
+          document.getElementById('area').style.visibility = 'hidden';
+          document.getElementById('startButton').style.visibility = 'visible';
+          document.getElementById('startButton').innerHTML = 'Restart Animation';
+          document.getElementById('flyingRadius').style.visibility = 'hidden';
+          document.getElementById('flyingArea').style.visibility = 'hidden';
+          document.getElementById('flyingAnswer').style.visibility = 'hidden';
+          document.getElementById('answer').style.visibility = 'hidden';
+          document.getElementById('flyingRadius').innerHTML = '';
+          document.getElementById('flyingArea').innerHTML = '';
+          document.getElementById('flyingAnswer').innerHTML = '';
+          currentLine = 0;
+          document.getElementById('startOverButton').style.visibility = 'hidden';
+          document.getElementById('startOverButton').style.display = 'none';
+        }
+      }
+
+    </script>
+  
+
+<div><div style="display: none; position: fixed; top: 30px; width: auto; max-width: 100%; text-align: center; left: 50%; transform: translateX(-50%); z-index: 99999999;"><div style="display: inline-block; font-size: 14px; font-weight: bold; border: 1px solid rgb(240, 195, 109); background-color: rgb(249, 237, 190); padding: 0px 10px; border-radius: 2px; box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 4px;"></div></div></div></body></html>

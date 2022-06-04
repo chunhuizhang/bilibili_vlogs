@@ -9,7 +9,8 @@ images = [img for img in os.listdir(image_folder) if img.endswith(".jpg")]
 frame = cv2.imread(os.path.join(image_folder, images[0]))
 height, width, layers = frame.shape
 
-video = cv2.VideoWriter(video_name, 0, 10, (width,height))
+fourcc = cv2.VideoWriter_fourcc(*'XVID')
+video = cv2.VideoWriter(video_name, fourcc, 10, (width,height))
 images.sort(key=lambda s: int(s.split('.')[0].split('-')[1]))
 for image in tqdm(images):
     video.write(cv2.imread(os.path.join(image_folder, image)))

@@ -1,0 +1,52 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script language="javascript">
+        window.onload = function () {
+            var landscape_canvas = document.getElementById("landscape");
+            var ctx = landscape_canvas.getContext("2d");
+            ctx.fillStyle = "Blue";
+            <!--ctx.fillRect(0, 0, 800, 850);-->
+
+            //Cone
+            ctx.fillStyle = "#67ff30";
+            ctx.beginPath();
+            ctx.moveTo(150, 250);
+            ctx.lineTo(300, 20);
+            ctx.lineTo(450, 250);
+            ctx.lineTo(150, 250);
+            ctx.fill();
+            ctx.closePath();
+            ctx.fillStyle = "Brown";
+            ctx.beginPath();
+            ctx.moveTo(400, 250);
+            ctx.lineTo(450, 80);
+            ctx.lineTo(600, 250);
+            ctx.lineTo(400, 250);
+            ctx.fill();
+            ctx.closePath();
+            ctx.beginPath();
+            // get 2 canvas
+            <!--var landscape_canvas = document.getElementById("landscape1");-->
+            <!--var ctx = landscape_canvas.getContext("2d");-->
+            <!--ctx.fillStyle = "blue";-->
+            <!--ctx.fillRect(0, 0, 600, 450);-->
+            <!--ctx.beginPath();-->
+            <!--ctx.fillStyle = "black";-->
+            <!--ctx.moveTo(75, 25);-->
+            <!--ctx.quadraticCurveTo(25, 25, 25, 62.5);-->
+            <!--ctx.quadraticCurveTo(25, 100, 50, 100);-->
+            <!--ctx.quadraticCurveTo(50, 120, 30, 125);-->
+            <!--ctx.quadraticCurveTo(60, 120, 65, 100);-->
+            <!--ctx.quadraticCurveTo(125, 100, 125, 62.5);-->
+            <!--ctx.quadraticCurveTo(125, 25, 75, 25);-->
+            <!--ctx.stroke();-->
+            <!--ctx.beginPath();-->
+        }
+    </script>
+</head>
+<body>
+<canvas id="landscape" width="800" height="350"></canvas>
+<canvas id="landscape1" width="800" height="150"></canvas>
+</body>
+</html>

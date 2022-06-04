@@ -1,0 +1,73 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <title>Canvas Test</title>
+</head>
+<body>
+<section>
+    <div>
+        <canvas id="canvas" width="400" height="300">
+            This text is displayed if your browser
+            does not support HTML5 Canvas.
+        </canvas>
+    </div>
+
+    <script type="text/javascript">
+        var canvas;
+        var ctx;
+        var x = 200;
+        var y = 150;
+        var dx = 2;
+        var dy = 4;
+        var WIDTH = 200;
+        var HEIGHT = 150;
+
+        function circle(x,y,r) {
+          ctx.beginPath();
+          ctx.arc(x, y, r, 0, Math.PI*2, false);
+          ctx.fill();
+        }
+
+        function rect(x,y,w,h) {
+          ctx.beginPath();
+          ctx.rect(x,y,w,h);
+          ctx.closePath();
+          ctx.fill();
+        }
+
+
+        function clear() {
+          ctx.clearRect(0, 0, WIDTH, HEIGHT);
+        }
+
+        function init() {
+          canvas = document.getElementById("canvas");
+          ctx = canvas.getContext("2d");
+          return setInterval(draw, 100);
+        }
+
+
+        function draw() {
+          clear();
+          ctx.fillStyle = "#FAF7F8";
+          rect(0,0,WIDTH,HEIGHT);
+          ctx.fillStyle = "#444444";
+          circle(x, y, 20);
+
+          if (x + dx > WIDTH || x + dx < 0)
+            dx = -dx;
+          if (y + dy > HEIGHT || y + dy < 0)
+            dy = -dy;
+
+          x += dx;
+          y += dy;
+        }
+
+        init();
+
+    </script>
+
+</section>
+</body>
+</html>

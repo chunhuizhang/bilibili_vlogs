@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+    #container
+    {
+      height: 400px;
+      position: relative;
+      width: 400px;
+    }
+    <!--#viewport-->
+    <!--{-->
+      <!--height: 100%;-->
+      <!--width: 100%;-->
+    <!--}-->
+    #controls
+    {
+      top: 0;
+      left: 0;
+      position: absolute;
+      width: 100%;
+    }
+    </style>
+</head>
+<body>
+
+<!--<div id="container">-->
+  <!--<canvas id="viewport">-->
+  <!--</canvas>-->
+  <!--<menu id="controls">-->
+       <!--<button onclick="copy()">belief</button>-->
+       <!--<button onclick="cut()">intents</button>-->
+  <!--</menu>-->
+<!--</div>-->
+<canvas id="viewport" style="z-index:1"></canvas>
+<input type="button" style="z-index:2; position:absolute; top:100; left:100" value="test"/>
+
+</body>
+<script src="main.js"></script>
+
+</html>

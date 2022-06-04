@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+   <head>
+     <title>Rubber bands with layered elements</title>
+
+      <style>
+         body {
+             background: rgba(100, 145, 250, 0.3);
+         }
+
+         #canvas {
+            margin-left: 20px;
+            margin-right: 0;
+            margin-bottom: 20px;
+            border: thin solid #aaaaaa;
+            cursor: crosshair;
+            padding: 0;
+         }
+
+         #controls {
+            margin: 20px 0px 20px 20px;
+         }
+
+         #rubberbandDiv {
+            position: absolute;
+            border: 3px solid blue;
+            cursor: crosshair;
+            display: none;
+         }
+
+      </style>
+   </head>
+
+  <body>
+      <div id='controls'>
+         <input type='button' id='resetButton' value='Reset'/>
+      </div>
+
+      <div id='rubberbandDiv'></div>
+
+      <canvas id='canvas' width='800' height='520'>
+         Canvas not supported
+      </canvas>
+
+     <script src='example.js'></script>
+  </body>
+</html>
