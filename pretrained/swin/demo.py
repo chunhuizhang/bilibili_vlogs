@@ -5,6 +5,7 @@ from PIL import Image
 from torchvision import transforms as T
 import json
 
+
 if __name__ == '__main__':
     trans_ = T.Compose(
         [
