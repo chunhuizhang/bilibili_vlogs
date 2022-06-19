@@ -3,9 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <style>
+        canvas {
+            border: 1px solid #ccc
+        }
+    </style>
 </head>
 <body>
     <canvas id="canvas"></canvas>
+    <script>
+        var can = document.getElementById("canvas");
+        can.width = 800;
+        can.height = 600;
+
+        var ctx = can.getContext("2d");
+
+        <!--ctx.beginPath();-->
+        ctx.rect(50, 50, 100, 100);
+
+        <!--ctx.fillStyle = "#00cc00";-->
+        <!--ctx.fill();-->
+
+        ctx.strokeStyle = "#cc0000";
+        ctx.stroke();
+
+        ctx.beginPath();
+        ctx.rect(200, 50, 100, 100);
+        ctx.strokeStyle = "#00cc00";
+        ctx.stroke();
+
+        ctx.beginPath();
+        ctx.moveTo(600, 100);
+        ctx.lineTo(650, 150);
+        ctx.lineTo(550, 150);
+        <!--ctx.lineTo(600, 100);-->
+        ctx.closePath();
+        ctx.lineWidth = 10;
+        ctx.strokeStyle = '#0000cc';
+        ctx.stroke();
+
+    </script>
 </body>
-<script src="main.js"></script>
+<!--<script src="main.js"></script>-->
 </html>

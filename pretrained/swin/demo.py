@@ -20,6 +20,7 @@ if __name__ == '__main__':
     batch_input = transformed.unsqueeze(0)
     print(batch_input.shape)
 
+    timm.list_models()
     model = timm.create_model('swin_base_patch4_window7_224', pretrained=True)
 
     with torch.no_grad():
