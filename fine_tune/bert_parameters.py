@@ -9,6 +9,8 @@ model_name = 'bert-base-uncased'
 model = BertModel.from_pretrained(model_name)
 cls_model = BertForSequenceClassification.from_pretrained(model_name)
 
+
+
 total_params = 0
 total_learnable_params = 0
 total_embedding_params = 0
