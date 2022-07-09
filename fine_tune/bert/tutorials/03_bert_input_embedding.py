@@ -18,5 +18,3 @@ model_input = tokenizer(test_sent, return_tensors='pt')
 model.eval()
 with torch.no_grad():
     output = model(**model_input)
-
-nn.MultiheadAttention
