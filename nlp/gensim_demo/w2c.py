@@ -6,12 +6,20 @@ from gensim.matutils import unitvec
 
 if __name__ == '__main__':
 
+    # 包含了句子以及分词的处理
     # sentences = word2vec.Text8Corpus('text8')
+    # # sentences = list of list of words
     # model = Word2Vec(sentences, workers=cpu_count()//2)
     # model.save('text8.model')
+
     model = Word2Vec.load('text8.model')
+
+    # model.wv.vectors, model.wv.index2word
     # woman + king - man == ?
+    # woman + king - man == queen
     print(model.most_similar(positive=['woman', 'king'], negative=['man'], topn=2))
+
+
 
     woman_vec = model.wv.word_vec('woman', use_norm=True)
     king_vec = model.wv.word_vec('king', use_norm=True)
