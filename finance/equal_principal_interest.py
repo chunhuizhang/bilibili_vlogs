@@ -12,8 +12,8 @@ def monthly_analysis(p, r, n):
 
 
 if __name__ == '__main__':
-    p = 600000
-    r = 0.06
-    n = 20*12
+    p = 2000000
+    r = 0.055
+    n = 30*12
     monthly_analysis(p, r, n)
 
