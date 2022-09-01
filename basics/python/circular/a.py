@@ -6,7 +6,7 @@ if TYPE_CHECKING:
 
 
 class A:
-    def foo(self, b: 'B'):
+    def foo(self, b: B):
         return 2*b.foo()
 
     def t(self):
