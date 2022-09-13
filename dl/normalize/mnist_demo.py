@@ -11,7 +11,8 @@ import torch
 # timm.data.IMAGENET_DEFAULT_STD: (0.229, 0.224, 0.225)
 transform = transforms.Compose([
                 transforms.ToTensor(),
-                transforms.Normalize(mean=[0.1307],  std=[0.3081])
+                transforms.Normalize(mean=[0.1307],  std=[0.3081]),
+                transforms.Resize()
             ])
 
 # MNIST dataset

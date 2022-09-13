@@ -3,6 +3,7 @@ from transformers.models.bert import BertModel
 import torch
 from torch import nn
 
+nn.BatchNorm2d()
 
 if __name__ == '__main__':
 
@@ -14,7 +15,7 @@ if __name__ == '__main__':
     text = "After stealing money from the bank vault, the bank robber was seen " \
        "fishing on the Mississippi river bank."
 
-
+    model.eval()
     token_inputs = tokenizer(text, return_tensors='pt')
     with torch.no_grad():
         outputs = model(**token_inputs)
