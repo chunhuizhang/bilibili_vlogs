@@ -1,0 +1,105 @@
+You can start by clicking the "start" button.
+You will not know what to fill in
+if you don't have the correct way of thinking.
+Sometimes I don’t have any ideas.
+To get a high score,
+testers need to reason abstractly 
+from the information they extracted 
+from small samples.
+A high score cannot be obtained by just doing a lot of exercises.
+Towards general artificial intelligence.
+Exploring cognitive intelligence with human-level intelligence quotient.
+"Artificial intelligence" has always been a window for humans 
+to explore the boundaries of their capabilities.
+In recent years, significant progress in artificial intelligence
+represented by deep learning has been made at the perception level,
+but there is still a long way for existing models 
+to achieve intelligence with general human-level cognitive capabilities.
+Research has shown that in the case of determining 
+whether two figures are alike,
+primates like capuchin monkeys can do it successfully.
+This indicates that animals have an innate cognitive architecture 
+that allows them to find generic paradigms 
+for solving problems from small data.
+These advantages of cognitive framing are particularly evident in humans.
+For slightly more complex geometric problems, for instance,
+the Amazonian indigene group in the rainforest 
+can still solve them easily.
+However, the deep learning foundation model represented by Transformer 
+is dwarfed in similar tests
+not only does the model require a large amount of labeled data for training,
+but its ultimate performance cannot be comparable to that of humans.
+Intelligence levels are generally measured 
+based on intelligence quotients,
+or "IQ" as it is often called.
+Psychologists have created a series of tests 
+to numerically quantify IQ 
+and have found that IQ level has a high correlation
+with human achievement.
+Among these tests,
+a representative one is Raven's Progressive Matrices.
+The following question is an example.
+This example is complicated at first glance,
+which has only 8 pictures and the shapes of objects are different.
+However, a closer analysis shows that 
+the objects in each row are all dark gray, light gray and black,
+and the size of the objects in each picture is basically the same.
+Thus, it is not difficult to find the correct answer.
+In the case of Odd-One-Out, on the other hand,
+subjects are required to pick an outlier data point from several examples.
+For example, in the next question,
+only the third picture has a dark black hexagon.
+For traditional perceptual intelligences,
+we need to provide thousands of examples 
+for the machine to learn the concept of a cat or a dog.
+For a cognitive intelligent agent,
+however, the machine can abstract the corresponding events from a huge space
+from just a few pictures and understand their spatial-temporal-causal relationships.
+Exploring models with human cognitive intelligence is 
+a fundamental research project of the Beijing Institute of General Artificial Intelligence (BIGAI),
+in which scholars from BIGAI and UCLA cooperate to address this challenging problem:
+how to use small data to understand
+spatial-temporal-causal relationships in IQ tests.
+After several years of study,
+we proposed the Tong-Hui model.
+In this summer, we invited students from 
+top universities in China to 
+have a competition with our Tong-Hui model. 
+In the preliminary tests,
+we had a rough estimate of the capabilities of the model.
+But when faced with truly highly intelligent human opponents,
+we were not sure how our model would perform.
+All right, I will click the "start" button 
+to begin the competition.
+Students often have a variety of wondrous ideas,
+but our program may not have similar thoughts.
+Thus, we are not sure 
+about the result of the competition.
+It was quite easy at the beginning,
+then it was a little bit tough,
+and later I had no idea.
+I made 6 to 7 mistakes.
+One would make mistakes if he cannot find the correct way of thinking and the hidden pattern,
+and he would not know what to fill in.
+We needed to spend 
+a lot of time thinking,
+but the machine could quickly 
+try various solutions in a short period of time.
+OK, thank you all.
+The Tong Hui model outperformed all the students 
+and the foundation model represented by Transformer.
+The first item in the upper left corner is a pentagon,
+the others do not have pentagons.
+We have beaten the best students in the country in this task.
+Our next step is to provide more robust criteria
+for the grading of AI 
+and to evaluate our general AI systems in a more comprehensive setting.
+We were always thinking that 
+if we ever really created intelligence that 
+could outperform the world's smartest brains,
+we must have discovered some kind of universal algorithm 
+or even a whole new cognitive architecture.
+Perhaps we are already on 
+the doorstep of general AI right now,
+and the success of this competition 
+will be a further step to it.
