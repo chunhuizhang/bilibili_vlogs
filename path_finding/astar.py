@@ -1,6 +1,7 @@
 import pygame
 import math
 from queue import PriorityQueue
+import time
 
 WIDTH = 800
 WIN = pygame.display.set_mode((WIDTH, WIDTH))
@@ -115,6 +116,7 @@ def algorithm(draw, grid, start, end):
     open_set_hash = {start}
 
     while not open_set.empty():
+
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
