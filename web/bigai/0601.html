@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+<head>
+<link rel="stylesheet" type="text/css" media="all" href="css/reset.css" /> <!-- reset css -->
+<script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
+    <style>
+    #canvas1 {
+      border: solid;
+      color: red;
+    }
+    #canvas2 {
+      border: solid;
+      color: green;
+    }
+    #canvas3 {
+      border: solid;
+      color: blue;
+    }
+    </style>
+</head>
+
+<body>
+    <form id='form1' style="position:relative">
+        <div id='d1' style="position:absolute; top:0px; left:0px; z-index:1">
+            <canvas id='canvas1' width='200' height='100'>
+                  Your browser does not support HTML5 Canvas.
+            </canvas>
+        </div>
+        <div id='d2' style="position:absolute; top:50px; left:50px; z-index:2">
+            <canvas id='canvas2' width='100' height='200'>
+                  Your browser does not support HTML5 Canvas.
+            </canvas>
+        </div>
+        <div id='d3' style="position:absolute; top:75px; left:75px; z-index:3">
+            <canvas id='canvas3' width='50' height='50'>
+                  Your browser does not support HTML5 Canvas.
+            </canvas>
+        </div>
+      </form>
+</body>
+
+    <script>
+       <!--分别对canvas1-2-3 添加东西，然后动态更新各自的元素内容 -->
+       
+    </script>
+
+</html>
