@@ -12,7 +12,7 @@ import torch
 transform = transforms.Compose([
                 transforms.ToTensor(),
                 transforms.Normalize(mean=[0.1307],  std=[0.3081]),
-                transforms.Resize()
+                # transforms.Resize()
             ])
 
 # MNIST dataset
