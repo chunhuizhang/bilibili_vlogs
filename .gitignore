@@ -4,3 +4,4 @@
 .idea/workspace.xml
 data/
 .ipynb_checkpoints/
+*.ckpt
