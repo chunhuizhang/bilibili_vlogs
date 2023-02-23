@@ -3,6 +3,7 @@
 
 > 持续更新中；
  
+- [动手写神经网络](https://space.bilibili.com/59807853/channel/collectiondetail?sid=581905)
 - [经典神经网络模型拓扑结构（pytorch）](https://space.bilibili.com/59807853/channel/collectiondetail?sid=446911)
 - [pytorch 强化学习](https://space.bilibili.com/59807853/channel/collectiondetail?sid=908186)
 - [动手写 bert 系列](https://space.bilibili.com/59807853/channel/collectiondetail?sid=496538)
