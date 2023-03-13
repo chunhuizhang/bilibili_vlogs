@@ -2,7 +2,7 @@
 .idea/bilibili_vlogs.iml
 .idea/modules.xml
 .idea/workspace.xml
-data/
+#data/
 .ipynb_checkpoints/
 *.ckpt
 dataset/
